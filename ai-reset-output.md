@@ -1,4 +1,4 @@
-[![AI-Ready Coaching](https://img.shields.io/badge/AI--Ready-Coaching-blueviolet?style=for-the-badge\&logo=OpenAI)](https://github.com/emcdo411/ai-reset-coaching-repo)
+[![AI-Ready Coaching](https://img.shields.io/badge/AI--Ready-Coaching-blueviolet?style=for-the-badge&logo=OpenAI)](https://github.com/emcdo411/ai-reset-coaching-repo)
 
 ---
 
@@ -14,19 +14,19 @@ A coaching guide for mid-career professionals shifting from ERP support, systems
 
 ## 📚 Table of Contents
 
-* [Overview](#overview)
-* [How AI is Reshaping Support Roles](#how-ai-is-reshaping-support-roles)
-* [Free & Low-Cost AI Learning Resources](#free--low-cost-ai-learning-resources)
-* [Training Assistance (WIOA & Veteran Benefits)](#training-assistance-wioa--veteran-benefits)
-* [LinkedIn Learning Plan (30–60 Days)](#linkedin-learning-plan-30-60-days)
-* [Your Role Still Matters](#your-role-still-matters)
-* [Step-by-Step Plan](#step-by-step-plan)
-* [Mermaid Workflow Diagram](#mermaid-workflow-diagram)
-* [Sources](#sources)
+* [📭 Overview](#-overview)
+* [🔍 How AI is Reshaping Support Roles](#-how-ai-is-reshaping-support-roles)
+* [💻 Free & Low-Cost AI Learning Resources](#-free--low-cost-ai-learning-resources)
+* [💵 Training Assistance WIOA and Veteran Benefits](#-training-assistance-wioa-and-veteran-benefits)
+* [📺 LinkedIn Learning Plan 30-60 Days](#-linkedin-learning-plan-30-60-days)
+* [🙌 Your Role Still Matters](#-your-role-still-matters)
+* [🗓 Step-by-Step Plan](#-step-by-step-plan)
+* [🔁 Mermaid Workflow Diagram](#-mermaid-workflow-diagram)
+* [📚 Sources](#-sources)
 
 ---
 
-## 🧭 Overview
+## 📭 Overview
 
 If you've worked in ERP support, software implementation, or operations and never needed to learn AI, this guide is your starting point. It's practical, fact-based, and built to get you moving forward without burnout. Use it to:
 
@@ -57,21 +57,19 @@ Roles in ERP, ticketing systems, and backend coordination are being enhanced or 
 
 ---
 
-## 💵 Training Assistance (WIOA & Veteran Benefits)
+## 💵 Training Assistance WIOA and Veteran Benefits
 
 * **WIOA (Workforce Innovation and Opportunity Act)**
-
   * Covers \$5K–\$10K in training
   * Apply via [American Job Centers](https://www.careeronestop.org/LocalHelp/AmericanJobCenters/find-american-job-centers.aspx)
 
-* **Veteran Vocational Rehab (VR\&E)**
-
+* **Veteran Vocational Rehab (VR&E)**
   * Training + certification support
-  * Apply via [VA.gov VR\&E](https://www.va.gov/careers-employment/vocational-rehabilitation/)
+  * Apply via [VA.gov VR&E](https://www.va.gov/careers-employment/vocational-rehabilitation/)
 
 ---
 
-## 📺 LinkedIn Learning Plan (30–60 Days)
+## 📺 LinkedIn Learning Plan 30-60 Days
 
 | Course                       | Time    | Focus             |
 | ---------------------------- | ------- | ----------------- |
@@ -126,18 +124,3 @@ graph TD
     style G fill:#3498db,stroke:#1a3c6e,stroke-width:2px,color:#fff
     style H fill:#007bff,stroke:#1a3c6e,stroke-width:2px,color:#fff
     style I fill:#007bff,stroke:#1a3c6e,stroke-width:2px,color:#fff
-```
-
----
-
-## 📚 Sources
-
-1. [McKinsey, 2023 – Generative AI Future of Work](https://www.mckinsey.com/mgi/our-research/generative-ai-and-the-future-of-work-in-america)
-2. [World Economic Forum, 2025 – Future of Jobs](https://www.weforum.org/publications/the-future-of-jobs-report-2025/)
-3. [CSET, 2024 – Workforce Training](https://cset.georgetown.edu/publication/ai-and-the-future-of-workforce-training/)
-4. [VA.gov – Vocational Rehab](https://www.va.gov/careers-employment/vocational-rehabilitation/)
-5. [LinkedIn Learning](https://www.linkedin.com/learning)
-6. [Grow with Google AI Essentials](https://grow.google/ai-essentials)
-7. [Microsoft AI Hub](https://learn.microsoft.com/en-us/training/ai)
-8. [SAP – AI Upskilling](https://www.sap.com/blogs/upskilling-your-workforce-for-the-ai-era)
-9. [Intel – AI Workforce](https://www.intel.com/content/www/us/en/education/higher-education/ai-for-workforce.html)
