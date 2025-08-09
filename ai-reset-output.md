@@ -105,22 +105,87 @@ You don't need to learn Python or become a data scientist. You need context and 
 
 ```mermaid
 graph TD
-    A[Start: Recognize AI Impact<br>29.5% Automation Risk] -->|Days 1-15| B[Learn AI Basics<br>Google AI Essentials or Coursera]
-    B -->|Days 16-30| C{Choose Skill Path}
-    C -->|ERP Consultant| D[Learn Process Mapping<br>LinkedIn Learning: 1.5h]
-    C -->|Technical Program Manager| E[Learn Agile Principles<br>LinkedIn Learning: 2.5h]
-    D --> F[Explore Funding<br>WIOA or VR&E]
-    E --> F
-    F -->|Days 31-60| G[Create Portfolio Piece<br>Process Map or Agile Plan]
-    G --> H[Apply Skills<br>Freelance or Job Applications]
-    H --> I[End: Build Future<br>11M New AI Jobs by 2030]
+  %% =========================
+  %% PHASES (LANES)
+  %% =========================
+  subgraph P1[Plan]
+    A[Start: Recognize AI Impact]:::start
+    RISK[Context: 29.5% automation risk]:::banner
+    JOBS[Context: 11M new AI jobs by 2030]:::banner
+  end
 
-    style A fill:#007bff,stroke:#1a3c6e,stroke-width:2px,color:#fff
-    style B fill:#3498db,stroke:#1a3c6e,stroke-width:2px,color:#fff
-    style C fill:#6c757d,stroke:#1a3c6e,stroke-width:2px,color:#fff
-    style D fill:#3498db,stroke:#1a3c6e,stroke-width:2px,color:#fff
-    style E fill:#3498db,stroke:#1a3c6e,stroke-width:2px,color:#fff
-    style F fill:#007bff,stroke:#1a3c6e,stroke-width:2px,color:#fff
-    style G fill:#3498db,stroke:#1a3c6e,stroke-width:2px,color:#fff
-    style H fill:#007bff,stroke:#1a3c6e,stroke-width:2px,color:#fff
-    style I fill:#007bff,stroke:#1a3c6e,stroke-width:2px,color:#fff
+  subgraph P2[Learn]
+    B[Learn AI Basics\n(Google AI Essentials or Coursera)]:::action
+    CP15[Checkpoint: Day 15 Review\n10 core terms + 1 mini demo]:::milestone
+  end
+
+  subgraph P3[Decide]
+    C{Choose Skill Path}:::decision
+    D[ERP Consultant Path\nOutcome: 1 process map]:::action
+    E[Technical Program Manager Path\nOutcome: 1 agile plan]:::action
+    CP30[Checkpoint: Day 30 Decision\nPath picked + scope set]:::milestone
+  end
+
+  subgraph P4[Build]
+    F[Explore Funding\nWIOA or VR&E]:::action
+    FFB[If funding fails:\nScholarships and free tracks]:::risk
+    G[Create Portfolio Piece\nRepo + README + screenshot]:::action
+    SLIP[If time slips:\nScope cut to MVP]:::risk
+  end
+
+  subgraph P5[Ship]
+    H[Apply Skills\n5 tailored apps per week\n1 networking reach-out per day]:::action
+  end
+
+  subgraph P6[Iterate]
+    FB[Interview or reviewer feedback]:::action
+    IMP[Improve portfolio\nRefine map or agile plan]:::action
+    CP60[Checkpoint: Day 60 Review\nEvidence of traction]:::milestone
+  end
+
+  %% =========================
+  %% SUPPORT & ACCOUNTABILITY
+  %% =========================
+  subgraph P7[Support & Accountability]
+    MENT[Find mentor or peer group]:::support
+    RETRO[Weekly 30-min retrospective]:::support
+  end
+
+  %% =========================
+  %% FLOW
+  %% =========================
+  A -->|Days 1-15| B --> CP15 --> C
+  C -->|ERP| D
+  C -->|TPM| E
+  D --> CP30
+  E --> CP30
+  CP30 --> F
+  F --> G
+  F -->|Funding blocked| FFB --> G
+  G --> H
+  G -->|Running late| SLIP --> H
+  H --> FB --> IMP --> H
+  H --> CP60 --> I[End: v1 Career Launch\nInterviews or paid project]:::end
+
+  %% Support connections (dashed)
+  A -.-> MENT
+  B -.-> RETRO
+  H -.-> RETRO
+  IMP -.-> MENT
+
+  %% =========================
+  %% STYLES
+  %% =========================
+  classDef start fill:#0d6efd,stroke:#153a72,color:#fff,stroke-width:2px;
+  classDef end fill:#0d6efd,stroke:#153a72,color:#fff,stroke-width:2px;
+  classDef action fill:#3aa0ff,stroke:#153a72,color:#fff,stroke-width:2px;
+  classDef decision fill:#6c757d,stroke:#153a72,color:#fff,stroke-width:2px;
+  classDef milestone fill:#1f8b4c,stroke:#0f4a28,color:#fff,stroke-width:2px;
+  classDef support fill:#8e44ad,stroke:#4a235a,color:#fff,stroke-width:2px;
+  classDef risk fill:#ff6b6b,stroke:#7a1f1f,color:#fff,stroke-width:2px;
+  classDef banner fill:#2b2b2b,stroke:#555,color:#eaeaea,stroke-dasharray: 3 3,stroke-width:1.5px;
+
+  %% banner placement (dotted links for context)
+  A -. context .- RISK
+  I -. outlook .- JOBS
+
