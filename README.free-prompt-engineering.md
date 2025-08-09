@@ -126,41 +126,41 @@ Use `transformers` pipelines directly in a notebook (no GPU required for small m
 
 ```mermaid
 flowchart LR
-  %% === LAYERS / STAGES ======================================================
+  %% ===================== LAYERS / STAGES =====================
   subgraph INPUT["User Interaction Layer"]
-    A1([User Request])
-    A2([Uploaded Docs / Data])
+    A1([User request])
+    A2([Uploaded documents or data])
   end
 
-  subgraph PREPROC["Input Governance & Parsing"]
-    B1{{Guardrails: Policy / Security / PII}}
-    B2([Language & Format Normalization])
+  subgraph PREPROC["Input governance and parsing"]
+    B1{{Guardrails - policy / security / PII}}
+    B2([Language and format normalization])
   end
 
-  subgraph CONTEXT["Context & Knowledge Injection"]
-    C1[(Vector Store: FAISS)]
-    C2([Top-K Retrieval & Ranking])
+  subgraph CONTEXT["Context and knowledge injection"]
+    C1[(Vector store - FAISS)]
+    C2([Top-k retrieval and ranking])
   end
 
-  subgraph PIPELINE["LLM Processing Pipeline"]
-    D1[[Step A: Analysis & Entity Extraction]]
-    D2[[Step B: Planning (Strict JSON Schema)]]
-    D3[[Step C: Tool Invocation / External APIs]]
-    D4[[Step D: Draft Generation]]
+  subgraph PIPELINE["LLM processing pipeline"]
+    D1([Step A - Analysis and entity extraction])
+    D2([Step B - Planning - JSON schema strict])
+    D3([Step C - Tool invocation and external APIs])
+    D4([Step D - Draft generation])
   end
 
-  subgraph EVAL["Validation & Quality Gates"]
-    E1{{Spec Compliance / JSON Validity}}
-    E2{{Safety Filters / Hallucination Checks}}
+  subgraph EVAL["Validation and quality gates"]
+    E1{{Spec compliance and JSON validity}}
+    E2{{Safety filters and hallucination checks}}
   end
 
-  subgraph OUTPUT["Delivery & Feedback"]
-    F1([Formatted Output])
-    F2([Citations / Sources])
-    F3([Feedback Loop to User])
+  subgraph OUTPUT["Delivery and feedback"]
+    F1([Formatted output])
+    F2([Citations and sources])
+    F3([Feedback loop to user])
   end
 
-  %% === FLOWS ================================================================
+  %% ===================== FLOWS =====================
   A1 --> B1 --> B2
   A2 --> B2
   B2 -->|valid| C1 --> C2
@@ -169,17 +169,17 @@ flowchart LR
   E1 -->|fail| D2
   E2 -. optional audits .-> E1
 
-  %% === STYLE CLASSES ========================================================
+  %% ===================== STYLES =====================
   classDef process fill:#1e90ff,stroke:#0d3b66,color:#ffffff,stroke-width:2px
   classDef decision fill:#f39c12,stroke:#874000,color:#ffffff,stroke-width:2px
   classDef data fill:#27ae60,stroke:#0b3d2e,color:#ffffff,stroke-width:2px
   classDef output fill:#34495e,stroke:#1f2a35,color:#ffffff,stroke-width:2px
 
-  class A1,A2,F1,F2,F3 process
+  class A1,A2,B2,D1,D2,D3,D4,F1,F2,F3 process
   class B1,E1,E2 decision
   class C1,C2 data
-  class D1,D2,D3,D4 process
   class F1,F2,F3 output
+
 ```
 
 ---
