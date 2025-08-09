@@ -174,7 +174,7 @@ graph TD
   %% STYLES
   %% =========================
   classDef start fill:#0d6efd,stroke:#153a72,color:#fff,stroke-width:2px;
-  classDef end fill:#0d6efd,stroke:#153a72,color:#fff,stroke-width:2px;
+  classDef finish fill:#0d6efd,stroke:#153a72,color:#fff,stroke-width:2px;
   classDef action fill:#3aa0ff,stroke:#153a72,color:#fff,stroke-width:2px;
   classDef decision fill:#6c757d,stroke:#153a72,color:#fff,stroke-width:2px;
   classDef milestone fill:#1f8b4c,stroke:#0f4a28,color:#fff,stroke-width:2px;
@@ -184,7 +184,7 @@ graph TD
 
   %% Assign classes (classic syntax)
   class A start;
-  class I end;
+  class I finish;
   class B,D,E,F,G,H,FB,IMP action;
   class C decision;
   class CP15,CP30,CP60 milestone;
