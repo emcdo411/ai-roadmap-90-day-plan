@@ -4,7 +4,7 @@
 
 # Free Prompt Engineering & LLM Systems — No-Cost Playbook
 
-A hands-on path to practice **deeplearning.ai** course principles (prompt patterns, chaining, evals, and simple tool use) without paying for the OpenAI platform. Mirrors the structure of the short courses “ChatGPT Prompt Engineering for Developers” and “Building Systems with the ChatGPT API,” adapted for **local or free resources**. :contentReference[oaicite:1]{index=1}
+A hands-on path to practice **deeplearning.ai** course principles (prompt patterns, chaining, evals, and simple tool use) without paying for the OpenAI platform. Mirrors the structure of the short courses “ChatGPT Prompt Engineering for Developers” and “Building Systems with the ChatGPT API,” adapted for **local or free resources**.
 
 ---
 
@@ -28,143 +28,179 @@ A hands-on path to practice **deeplearning.ai** course principles (prompt patter
 ## What You’ll Build
 - A **local LLM lab** using free tools
 - Reusable **prompt templates**
-- A tiny **pipeline** that chains steps (analyze ➜ transform ➜ generate)
-- A minimal **RAG** demo with a local vector index
+- A **pipeline** chaining steps (Analyze ➜ Plan ➜ Generate)
+- A **RAG** demo with a local vector index
 - Basic **evals/sanity checks**
-
-> This mirrors the skills emphasized in the deeplearning.ai short courses (prompting, chaining, and system design). :contentReference[oaicite:2]{index=2}
 
 ---
 
 ## Quick Start (10 minutes)
-1. **Install Ollama** (runs models locally): https://ollama.com  
-2. Pull a small model (quick & light):
+1. **Install Ollama**: https://ollama.com  
+2. Pull a small model:
    ```bash
    ollama pull mistral:7b
-Chat locally:
+````
 
-bash
-Copy
-Edit
-ollama run mistral:7b
-Optional GUI: LM Studio (point it at an open model and play).
+3. Chat locally:
 
-Environment Setup
-Option A: Local + Python
+   ```bash
+   ollama run mistral:7b
+   ```
+4. Optional GUI: **LM Studio** for a point-and-click experience.
 
-bash
-Copy
-Edit
+---
+
+## Environment Setup
+
+**Option A: Local + Python**
+
+```bash
 python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install transformers torch datasets faiss-cpu sentence-transformers jupyter
-Option B: Google Colab (free)
-Use transformers pipelines directly in a notebook (no GPU required for small models).
+```
 
-Optional: langchain or llama-index to simplify chaining; datasets for small eval sets; faiss-cpu for RAG.
+**Option B: Google Colab (Free)**
+Use `transformers` pipelines directly in Colab (no GPU required for small models).
 
-Course-Mirrored Steps (Free Alternatives)
-1) Prompt Fundamentals
-The course focus: clear instructions, delimiting context, role hints, iterative refinement, few-shot examples. 
-DeepLearning.ai
+**Optional Enhancements:**
 
-Do it free:
+* `langchain` or `llama-index` for chaining
+* `datasets` for small eval sets
+* `faiss-cpu` for RAG
 
-Create prompts/base.txt with:
+---
 
-Task: one sentence
+## Course-Mirrored Steps (Free Alternatives)
 
-Constraints: bullets (tone, audience, style)
+### 1) Prompt Fundamentals
 
-Context: delimited block (---context--- …)
+**Do it free:**
 
-Examples: 1–3 good/weak examples
+* Create `prompts/base.txt` with **Task**, **Constraints**, **Context**, and **Examples**.
+* Run with a local model (Ollama or `transformers`).
 
-Run with a local model (Ollama or transformers) and tweak until outputs match your spec.
+### 2) Chaining Calls (Systems)
 
-2) Chaining Calls (Systems)
-The course focus: sequence multiple LLM calls + code in between to build workflows. 
-DeepLearning.ai
+**Do it free:**
 
-Do it free:
+* Step A: Analyze → Step B: Plan (JSON) → Step C: Write.
+* Glue with Python functions calling local LLM.
 
-Write a simple Python chain:
+### 3) Structured Output & JSON “Function Calling”
 
-Step A (analyze): extract key points
+**Do it free:**
 
-Step B (plan): outline result in bullets
+* Force JSON output with schema checks; retry if invalid.
+* Simulate tool calls via JSON plans → Python executes → feed results back.
 
-Step C (write): produce the final asset using the outline
+### 4) Retrieval-Augmented Generation (RAG)
 
-Glue with plain Python functions; each step calls your local model (Ollama REST API or transformers).
+**Do it free:**
 
-3) Structured Output & JSON “Function Calling”
-The course focus: get structured, machine-usable output; tool use. 
-DeepLearning.ai
+* Build FAISS index: split docs → embed → store → retrieve top-k → append to prompt.
+* Include **citations** with results.
 
-Do it free:
+### 5) Safety & Simple Evaluations
 
-Prompt the model to return valid JSON only. Add a regex/jsonschema check; if invalid, re-prompt with the error.
+**Do it free:**
 
-For “tools,” simulate by:
+* CSV of prompts + expected rules.
+* Python checker flags failures, retries with corrective prompt.
 
-Ask model to produce a JSON plan (what tool + arguments).
+---
 
-Your Python executes the tool (e.g., a calculator or web fetch), then feeds the tool result back for the next step.
+## Mermaid Workflow
 
-4) Retrieval-Augmented Generation (RAG)
-The course focus: provide external context safely. 
-DeepLearning.AI - Learning Platform
+```mermaid
+flowchart LR
+  subgraph INPUT[User Interaction Layer]
+    A1([User Request])
+    A2([Uploaded Docs / Data])
+  end
 
-Do it free:
+  subgraph PREPROC[Input Governance & Parsing]
+    B1{{Guardrails: Policy / Security Checks}}
+    B2([Language & Format Normalization])
+  end
 
-Build a tiny FAISS index:
+  subgraph CONTEXT[Context & Knowledge Injection]
+    C1[(Vector Store: FAISS)]
+    C2([Context Retrieval & Ranking])
+  end
 
-Split docs → embed with sentence-transformers → store vectors in FAISS
+  subgraph PIPELINE[LLM Processing Pipeline]
+    D1[[Step A: Analysis & Entity Extraction]]
+    D2[[Step B: Planning (JSON Schema)]]
+    D3[[Step C: Tool Invocation / External API Calls]]
+    D4[[Step D: Draft Generation]]
+  end
 
-Retrieve top-k → concatenate into the prompt context
+  subgraph EVAL[Validation & Quality Gates]
+    E1{{Spec Compliance Checks}}
+    E2{{Safety Filters & PII Scan}}
+  end
 
-Keep citations: return source filenames/IDs with each chunk.
+  subgraph OUTPUT[Delivery Layer]
+    F1([Formatted Output])
+    F2([Citations / References])
+    F3([Feedback Loop to User])
+  end
 
-5) Safety & Simple Evaluations
-The course focus: evaluate inputs/outputs and guardrails. 
-DeepLearning.AI - Learning Platform
+  %% Connections
+  A1 --> B1 --> B2
+  A2 --> B2
+  B2 -->|Valid| C1 --> C2
+  C2 --> D1 --> D2 --> D3 --> D4 --> E1
+  E1 -->|Pass| F1
+  E1 -->|Fail| D2
+  F1 --> F2 --> F3
 
-Do it free:
+  %% Styling
+  classDef process fill=#1e90ff,stroke=#0d3b66,color=#fff,stroke-width=2px
+  classDef decision fill=#f39c12,stroke=#874000,color=#fff,stroke-width=2px
+  classDef data fill=#27ae60,stroke=#0b3d2e,color=#fff,stroke-width=2px
 
-Create a tiny CSV of prompts + expected properties (e.g., “must include a numbered list”; “no PII”).
+  class A1,A2,F1,F2,F3 process
+  class B1,E1,E2 decision
+  class C1,C2 data
+  class D1,D2,D3,D4 process
+```
 
-Write a Python checker that flags misses, then auto-retries with a corrective system prompt (“You failed constraint X; fix only that.”).
+This diagram:
 
-Mermaid Workflow
-mermaid
-Copy
-Edit
-flowchart TD
-  A[User Input] --> B{Guardrails & Parsing}
-  B -->|valid| C[Retrieve Context (FAISS)]
-  B -->|invalid| B2[Auto-correct Input]
-  C --> D[Step A: Analyze]
-  D --> E[Step B: Plan (JSON)]
-  E --> F[Tools Runner (Python)]
-  F --> G[Step C: Generate]
-  G --> H{Eval Checks}
-  H -->|pass| I[Final Output]
-  H -->|fail| E
-Exercises & Checkpoints
-Prompt tuning: add/remove constraints; compare outputs
+* **Shows swimlane-like stages** for a clear enterprise architecture narrative.
+* **Separates governance, context retrieval, LLM processing, and output delivery** like a Deloitte/AWS architecture deck.
+* Uses **clear conditional flow** and **loop-backs for quality gates**.
 
-Chain growth: add a review step that enforces a style guide
+---
 
-RAG: index your course notes and cite 2–3 sources per answer
+## Exercises & Checkpoints
 
-Eval: write 10 tests; aim for ≥80% pass rate before you “ship”
+* Tune prompts by adding/removing constraints.
+* Add a review step enforcing a style guide.
+* Build a RAG index from your notes, return top-3 sources.
+* Write 10 eval tests, target ≥80% pass before shipping.
 
-Troubleshooting
-Outputs are off-spec: add explicit formatting constraints and one minimal example
+---
 
-JSON keeps breaking: prepend a schema and a validator; return only JSON
+## Troubleshooting
 
-Slow on CPU: switch to smaller models (e.g., 3–7B), reduce context length
+* **Off-spec output:** tighten formatting constraints + add minimal examples.
+* **Broken JSON:** use schema validation + retry loop.
+* **Slow CPU:** smaller model (3–7B), shorter context.
 
-Attribution
-This README mirrors the structure of deeplearning.ai’s short courses so you can practice for free with local/open models. For the original, see the course pages.
+---
+
+## Attribution
+
+This README mirrors **deeplearning.ai** course principles but uses **free/local tools** so you can train without API spend.
+
+```
+
+---
+
+If you want, I can now also **add an AWS-style architecture diagram** (boxes + services icons) as a secondary visual below the Mermaid for a real *boardroom deliverable*. That would give you a dual-view: **process workflow** + **system architecture**.  
+
+Do you want me to add that as well?
+```
+
