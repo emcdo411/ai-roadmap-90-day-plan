@@ -115,40 +115,37 @@ graph TD
   end
 
   subgraph P2[Learn]
-    B[Learn AI Basics\n(Google AI Essentials or Coursera)]:::action
-    CP15[Checkpoint: Day 15 Review\n10 core terms + 1 mini demo]:::milestone
+    B[Learn AI Basics<br/>Google AI Essentials or Coursera]:::action
+    CP15[Checkpoint: Day 15 Review<br/>10 core terms + 1 mini demo]:::milestone
   end
 
   subgraph P3[Decide]
     C{Choose Skill Path}:::decision
-    D[ERP Consultant Path\nOutcome: 1 process map]:::action
-    E[Technical Program Manager Path\nOutcome: 1 agile plan]:::action
-    CP30[Checkpoint: Day 30 Decision\nPath picked + scope set]:::milestone
+    D[ERP Consultant Path<br/>Outcome: 1 process map]:::action
+    E[Technical Program Manager Path<br/>Outcome: 1 agile plan]:::action
+    CP30[Checkpoint: Day 30 Decision<br/>Path picked + scope set]:::milestone
   end
 
   subgraph P4[Build]
-    F[Explore Funding\nWIOA or VR&E]:::action
-    FFB[If funding fails:\nScholarships and free tracks]:::risk
-    G[Create Portfolio Piece\nRepo + README + screenshot]:::action
-    SLIP[If time slips:\nScope cut to MVP]:::risk
+    F[Explore Funding<br/>WIOA or VRE]:::action
+    FFB[If funding fails:<br/>Scholarships and free tracks]:::risk
+    G[Create Portfolio Piece<br/>Repo + README + screenshot]:::action
+    SLIP[If time slips:<br/>Scope cut to MVP]:::risk
   end
 
   subgraph P5[Ship]
-    H[Apply Skills\n5 tailored apps per week\n1 networking reach-out per day]:::action
+    H[Apply Skills<br/>5 tailored apps per week<br/>1 networking reach out per day]:::action
   end
 
   subgraph P6[Iterate]
     FB[Interview or reviewer feedback]:::action
-    IMP[Improve portfolio\nRefine map or agile plan]:::action
-    CP60[Checkpoint: Day 60 Review\nEvidence of traction]:::milestone
+    IMP[Improve portfolio<br/>Refine map or agile plan]:::action
+    CP60[Checkpoint: Day 60 Review<br/>Evidence of traction]:::milestone
   end
 
-  %% =========================
-  %% SUPPORT & ACCOUNTABILITY
-  %% =========================
-  subgraph P7[Support & Accountability]
+  subgraph P7[Support and Accountability]
     MENT[Find mentor or peer group]:::support
-    RETRO[Weekly 30-min retrospective]:::support
+    RETRO[Weekly 30 min retrospective]:::support
   end
 
   %% =========================
@@ -165,7 +162,7 @@ graph TD
   G --> H
   G -->|Running late| SLIP --> H
   H --> FB --> IMP --> H
-  H --> CP60 --> I[End: v1 Career Launch\nInterviews or paid project]:::end
+  H --> CP60 --> I[End: v1 Career Launch<br/>Interviews or paid project]:::end
 
   %% Support connections (dashed)
   A -.-> MENT
@@ -183,9 +180,9 @@ graph TD
   classDef milestone fill:#1f8b4c,stroke:#0f4a28,color:#fff,stroke-width:2px;
   classDef support fill:#8e44ad,stroke:#4a235a,color:#fff,stroke-width:2px;
   classDef risk fill:#ff6b6b,stroke:#7a1f1f,color:#fff,stroke-width:2px;
-  classDef banner fill:#2b2b2b,stroke:#555,color:#eaeaea,stroke-dasharray: 3 3,stroke-width:1.5px;
 
-  %% banner placement (dotted links for context)
-  A -. context .- RISK
-  I -. outlook .- JOBS
+  %% banner placement (dotted, labeled arrows so GitHub Mermaid is happy)
+  A -. context .-> RISK
+  I -. outlook .-> JOBS
+
 
