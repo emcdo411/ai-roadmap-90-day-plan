@@ -207,14 +207,84 @@ This README mirrors course-style principles using **free/local tools** so you ca
 
 ---
 
-### Quick tips if it still doesn’t render
+### README.md instructions on how to run this project
 
-* Do **not** wrap the entire README inside a triple-backtick code fence.
-* Ensure the Mermaid block is exactly like above:
+Great run! 🥳 Also: your model hallucinated a couple things—we should correct them:
 
-  * A blank line before ` ```mermaid `
-  * No leading spaces or `>` quotes on that line
-  * A matching closing triple backtick on its own line
-* GitHub renders Mermaid in repos, gists, and PR descriptions; some editors (e.g., Discord/Notion) may require a Mermaid plugin or won’t render it natively.
+* **No API key needed.** Ollama runs **locally** at `http://localhost:11434`; there’s no `.ollamarc` or key.
+* You **don’t need** any special “ollama-api” Python package. Your tiny `requests` wrapper is perfect.
+
+Want a clean, correct README and next steps? Paste this in PowerShell from your project folder to create `README.md`:
+
+````powershell
+@'
+# Local LLM Lab (Windows) — Ollama + Python 3.11
+
+## Prereqs
+- Windows 10/11 (64-bit)
+- Python 3.11 (venv recommended)
+- [Ollama](https://ollama.com) installed and running (`ollama serve` runs as a service on Windows)
+- Pulled model: `ollama pull mistral`
+
+## Setup
+```powershell
+# from the repo root
+py -3.11 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -U pip setuptools wheel
+pip install requests sentence-transformers faiss-cpu
+````
+
+> If `faiss-cpu` gives trouble on Windows, skip RAG for now (it’s only needed for the RAG demo).
+
+## Quick smoke test (Ollama)
+
+```powershell
+curl http://localhost:11434/api/tags   # should list "mistral"
+ollama run mistral "Say hello in one short sentence."
+```
+
+## Run the Analyze → Plan → Generate pipeline
+
+```powershell
+python pipeline.py
+```
+
+If you see timeouts, open `llm.py` and either (A) use streaming with `stream=True`, or (B) keep non-streaming but set `timeout=600` and `num_predict=256`.
+
+## Minimal RAG demo
+
+1. Put a few `.txt` files in `./data`
+2. Build the index:
+
+```powershell
+python rag_build_index.py
+```
+
+3. Ask grounded questions:
+
+```powershell
+python rag_query.py "Summarize install steps in two sentences."
+```
+
+## Files
+
+* `llm.py` — tiny HTTP wrapper around Ollama `/api/chat`
+* `pipeline.py` — Analyze → Plan → Generate chain
+* `rag_build_index.py` — builds FAISS index from `./data/*.txt`
+* `rag_query.py` — retrieves context and asks Mistral with citations
+
+## Notes
+
+* Ollama is fully local; **no API key** needed.
+* Model name in code is simply `"mistral"`.
+* Keep outputs fast with `num_predict=128–256`; raise as needed.
+  '@ | Set-Content -Encoding UTF8 .\README.md
+
+```
+
+If you want, I can also drop in the exact **streaming** `llm.py` I recommended so you don’t hit timeouts again. Or we can wire up the RAG files next—your call.
+```
+
 
 
