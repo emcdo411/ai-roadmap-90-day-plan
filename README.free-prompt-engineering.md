@@ -4,43 +4,47 @@
 
 # Free Prompt Engineering & LLM Systems — No-Cost Playbook
 
-A hands-on path to practice prompt patterns, chaining, evals, and simple tool use **without** paying for the OpenAI platform. This mirrors the structure of popular short courses on prompt engineering and system design, adapted for **local or free resources**.
+A hands-on path to practice prompt patterns, chaining, evals, and simple tool use **without** paying for the OpenAI platform. Mirrors the structure of popular short courses on prompt engineering and system design, adapted for **local or free resources**.
 
 ---
 
 ## 📚 Table of Contents
-- [What You’ll Build](#what-youll-build)
-- [Quick Start (10 minutes)](#quick-start-10-minutes)
-- [Environment Setup](#environment-setup)
-- [Course-Mirrored Steps (Free Alternatives)](#course-mirrored-steps-free-alternatives)
-  - [1) Prompt Fundamentals](#1-prompt-fundamentals)
-  - [2) Chaining Calls (Systems)](#2-chaining-calls-systems)
-  - [3) Structured Output & JSON “Function Calling”](#3-structured-output--json-function-calling)
-  - [4) Retrieval-Augmented Generation (RAG)](#4-retrieval-augmented-generation-rag)
-  - [5) Safety & Simple Evaluations](#5-safety--simple-evaluations)
-- [Mermaid Workflow](#mermaid-workflow)
-- [Exercises & Checkpoints](#exercises--checkpoints)
-- [Troubleshooting](#troubleshooting)
-- [Attribution](#attribution)
+
+* [What You’ll Build](#what-youll-build)
+* [Quick Start (10 minutes)](#quick-start-10-minutes)
+* [Environment Setup](#environment-setup)
+* [Course-Mirrored Steps (Free Alternatives)](#course-mirrored-steps-free-alternatives)
+
+  * [1) Prompt Fundamentals](#1-prompt-fundamentals)
+  * [2) Chaining Calls (Systems)](#2-chaining-calls-systems)
+  * [3) Structured Output & JSON “Function Calling”](#3-structured-output--json-function-calling)
+  * [4) Retrieval-Augmented Generation (RAG)](#4-retrieval-augmented-generation-rag)
+  * [5) Safety & Simple Evaluations](#5-safety--simple-evaluations)
+* [Mermaid Workflow](#mermaid-workflow)
+* [Exercises & Checkpoints](#exercises--checkpoints)
+* [Troubleshooting](#troubleshooting)
+* [Attribution](#attribution)
 
 ---
 
 ## What You’ll Build
-- A **local LLM lab** using free tools
-- Reusable **prompt templates**
-- A **pipeline** that chains steps (Analyze ➜ Plan ➜ Generate)
-- A minimal **RAG** demo with a local vector index
-- Basic **evals/sanity checks**
+
+* A **local LLM lab** using free tools
+* Reusable **prompt templates**
+* A **pipeline** that chains steps (Analyze ➜ Plan ➜ Generate)
+* A minimal **RAG** demo with a local vector index
+* Basic **evals/sanity checks**
 
 ---
 
 ## Quick Start (10 minutes)
-1. **Install Ollama**: https://ollama.com  
+
+1. **Install Ollama**: [https://ollama.com](https://ollama.com)
 2. Pull a small model:
+
    ```bash
    ollama pull mistral:7b
-````
-
+   ```
 3. Chat locally:
 
    ```bash
@@ -119,8 +123,6 @@ Use `transformers` pipelines directly in a notebook (no GPU required for small m
 ---
 
 ## Mermaid Workflow
-
-> The diagram is fenced in a `mermaid` code block so GitHub (and other Mermaid-aware renderers) will render the **diagram** instead of showing raw code.
 
 ```mermaid
 flowchart LR
@@ -203,9 +205,16 @@ flowchart LR
 
 This README mirrors course-style principles using **free/local tools** so you can build skills without API spend.
 
-```
+---
 
-Want me to drop this into your repo structure and add a minimal Python skeleton for the chain + RAG demo next?
-::contentReference[oaicite:0]{index=0}
-```
+### Quick tips if it still doesn’t render
+
+* Do **not** wrap the entire README inside a triple-backtick code fence.
+* Ensure the Mermaid block is exactly like above:
+
+  * A blank line before ` ```mermaid `
+  * No leading spaces or `>` quotes on that line
+  * A matching closing triple backtick on its own line
+* GitHub renders Mermaid in repos, gists, and PR descriptions; some editors (e.g., Discord/Notion) may require a Mermaid plugin or won’t render it natively.
+
 
